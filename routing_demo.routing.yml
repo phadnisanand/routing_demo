@@ -1,0 +1,93 @@
+routing_demo:
+  path: 'routing_demo/article'
+  options:
+    _admin_route: FALSE
+  defaults:
+    _form: 'Drupal\user\Form\UserLoginForm'
+    _title: 'Tour Demo'
+  requirements:
+    _access: 'TRUE'
+
+routing_demo.node_teaser:
+  path: '/teaser/{node}'
+  defaults:
+    _entity_view: 'node.teaser'
+  requirements:
+    _permission: 'access content'
+
+routing_demo.node_teaser_admin:
+  path: '/teasernode/{node}'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _entity_view: 'node.teaser'
+  requirements:
+    _permission: 'access content'
+
+routing_demo.node_full_check:
+  path: '/fulltext/{node}'
+  defaults:
+    _entity_view: 'node.full'
+  requirements:
+    _permission: 'access content'
+
+routing_demo.entity_default_node:
+  path: '/editnode/{node}'
+  defaults:
+    _entity_form: node.default
+  requirements:
+    _permission: 'access content'
+
+routing_demo.entity_default_list:
+  path: '/listnode'
+  defaults:
+    _entity_list: 'node'
+  requirements:
+    _permission: 'access content'
+
+routing_demo_demo:
+  path: 'routing_demo_con'
+  options:
+    _admin_route: FALSE
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\TestPageController::test'
+    _title: 'Tour Demo'
+  requirements:
+    _access: 'TRUE'
+
+routing_demo_redirect:
+  path: 'routing_demo_redirect'
+  options:
+    _admin_route: FALSE
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\TestPageController::testRedirect'
+    _title: 'Tour Redirect'
+  requirements:
+    _access: 'TRUE'
+
+routing_demo_demo.test_page_message:
+  path: 'routing_demo_con/message/{arg1}/{arg2}'
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\TestPageController::testArg'
+  requirements:
+    _access: 'TRUE'
+    arg1: \d+
+    arg2: \d+ 
+
+routing_demo_demo.test_page_node:
+ path: 'routing_demo_con/node/{node}'
+ defaults:
+   _controller: '\Drupal\routing_demo\Controller\TestPageController::testNode'
+ requirements:
+    _access: 'TRUE' 
+
+route_callbacks:
+ - '\Drupal\routing_demo\Routing\TestRoutes::routes' 
+
+
+routing_demo_demo.testpermisson:
+  path: 'routing_demo_con/testpermisson'
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\TestPageController::testpermisson'
+  requirements:
+   _permission: 'custom routing permisson'
