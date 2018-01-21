@@ -1,0 +1,5 @@
+services:
+  a_node:
+    class: Drupal\routing_demo\ParamConverter\ExampleParamConverter
+    tags:
+      - { name: paramconverter }

@@ -91,3 +91,26 @@ routing_demo_demo.testpermisson:
     _controller: '\Drupal\routing_demo\Controller\TestPageController::testpermisson'
   requirements:
    _permission: 'custom routing permisson'
+
+
+routing_demo_demo.testcheck:
+  path: 'routing_demo_con/testcheck'
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\ExampleController::contentDemo'
+    _title_callback: '\Drupal\routing_demo\Controller\ExampleController::titleMethodName'
+    some_var: 15
+    another_var: 'This is a string'
+  requirements:
+   _permission: 'custom routing permisson'
+
+routing_demo_demo.name:
+  path: '/routing_demo/{a_node}'
+  defaults:
+    _controller: '\Drupal\routing_demo\Controller\ExampleController::content'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      a_node:
+        type: a_node
+
